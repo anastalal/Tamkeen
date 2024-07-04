@@ -1,0 +1,92 @@
+
+[
+    {
+      "color": "red",
+      "questions": [
+        {
+          "text": "مراقبة آلة على خط تجميع بمصنع ما",
+          "options": [
+            { "label": "L", "value": "like" },
+            { "label": "?", "value": "neutral" },
+            { "label": "D", "value": "dislike" }
+          ]
+        },
+        {
+          "text": "تشغيل مزرعة لمنتجات الألبان",
+          "options": [
+            { "label": "L", "value": "like" },
+            { "label": "?", "value": "neutral" },
+            { "label": "D", "value": "dislike" }
+          ]
+        },
+        {
+          "text": "بناء خزانة مطبخ",
+          "options": [
+            { "label": "L", "value": "like" },
+            { "label": "?", "value": "neutral" },
+            { "label": "D", "value": "dislike" }
+          ]
+        },
+        {
+          "text": "إصلاح الأجهزة المنزلية",
+          "options": [
+            { "label": "L", "value": "like" },
+            { "label": "?", "value": "neutral" },
+            { "label": "D", "value": "dislike" }
+          ]
+        },
+        {
+          "text": "تقوم بأعمال الرصف وتركيب البلاط",
+          "options": [
+            { "label": "L", "value": "like" },
+            { "label": "?", "value": "neutral" },
+            { "label": "D", "value": "dislike" }
+          ]
+        },
+        {
+          "text": "حراسة أموال في سيارة مصفحة",
+          "options": [
+            { "label": "L", "value": "like" },
+            { "label": "?", "value": "neutral" },
+            { "label": "D", "value": "dislike" }
+          ]
+        },
+        {
+          "text": "تطوير دواء جديد",
+          "options": [
+            { "label": "L", "value": "like" },
+            { "label": "?", "value": "neutral" },
+            { "label": "D", "value": "dislike" }
+          ]
+        },
+        {
+          "text": "دراسة تاريخ الحضارات القديمة",
+          "options": [
+            { "label": "L", "value": "like" },
+            { "label": "?", "value": "neutral" },
+            { "label": "D", "value": "dislike" }
+          ]
+        },
+        {
+          "text": "دراسة السفر للفضاء",
+          "options": [
+            { "label": "L", "value": "like" },
+            { "label": "?", "value": "neutral" },
+            { "label": "D", "value": "dislike" }
+          ]
+        },
+        {
+          "text": "التخطيط لدراسة الجدوى",
+          "options": [
+            { "label": "L", "value": "like" },
+            { "label": "?", "value": "neutral" },
+            { "label": "D", "value": "dislike" }
+          ]
+        }
+      ]
+    }
+  ]
+  
+
+
+  
