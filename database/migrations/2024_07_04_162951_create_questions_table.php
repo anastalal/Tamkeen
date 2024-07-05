@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('text');
-            $table->string('color');
+            $table->foreignId('pattern_id')->constrained('patterns');
+            $table->string('color')->nullable();
             $table->timestamps();
         });
     }

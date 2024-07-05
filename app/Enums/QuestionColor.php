@@ -13,7 +13,7 @@ final class QuestionColor extends Enum
 {
     const Green = 'green';
     const Pink = 'pink';
-    const Brown = 'brown';
+    const Orange = 'orange';
     const Purple = 'purple';
     const Yellow = 'yellow';
     const Blue = 'blue';
