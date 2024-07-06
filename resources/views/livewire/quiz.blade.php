@@ -1,18 +1,24 @@
 <div class="">
    <!-- Progress -->
-{{-- <div class=" fixed top-[9%]  flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow="{{ $currentPage  }}" aria-valuemin="{{ $currentPage  }}" aria-valuemax="{{ $totalPages }}">
-    <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500" style="width: {{  $currentPage  * 10 }}%"></div>
- </div> --}}
+   
+   <div class="mx-2s">
+    {{-- <div class=" fixed  left-2 right-2 top-[9%]  flex w-fulls h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow="{{ $currentPage * 10  }}" aria-valuemin="10" aria-valuemax="{{ $totalPages * 10 }}" >
+        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500" style="width: {{   $currentPage *10 }}%"></div>
+     </div> --}}
+     
+   </div>
+
+
   <!-- End Progress -->
     @if (!$showResults)
-    <div class=" text-gray-400 p-4">
+    <div class=" text-gray-400  p-4">
         <h1 class="text-2xl md:text-4xl mb-2 text-center text-purple-400 font-bold">اكتشف اهتمامك المهني</h1>
         <p class="text-center">اختر "مهتم" أو "غير مهتم" لكل من الأسئلة التالية لتحديد اهتماماتك المهنية:</p>
     </div>
     @endif
    
     @if ($showResults)
-    <div class="result container mx-auto p-4 text-gray-200">
+    <div class="result container mx-auto p-4 dark:text-gray-200 text-gray-800">
         <h2 class="text-center  text-purple-400 font-semibolds text-2xl md:text-5xl font-bold my-3">نمطك هو: {{ $resultPattern->name }}</h2>
         <p>
            {!! $resultPattern->description !!}
@@ -41,8 +47,25 @@
         </div>
         <hr class=" border-gray-700">
         @endforeach
+        <div class="flex justify-center my-3">
+            <button wire:click="resetQuiz"
+            class="relative inline-flex w-48 items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group">
+            <span
+                class="absolute rotate-180 inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-500 group-hover:translate-x-0 ease">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+            </span>
+            <span
+                class="absolute flex items-center justify-center w-full h-full text-purple-500 transition-all duration-300 transform group-hover:translate-x-full ease">اعادة الاختبار</span>
+            <span class="relative invisible">اعادة الاختبار</span>
+        </button>
+        </div>
     </div>    
         {{-- <button wire:click="resetQuiz">إعادة الاختبار</button> --}}
+        
     @else
         <div class="grid gap-4 grid-cols-1 md:grid-cols-3 p-4">
             @foreach ($questionsToShow as $question)
@@ -99,4 +122,22 @@
             @endif
         </div>
     @endif
+    @if (!$showResults)
+    <div class="fixed bottom-1 size-12">
+        <svg class="size-full" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background Circle -->
+            <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-gray-200 dark:text-neutral-700" stroke-width="2"></circle>
+            <!-- Progress Circle inside a group with rotation -->
+            <g class="origin-center -rotate-90 transform">
+                <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-color1-600 dark:text-color1-500" stroke-width="2" stroke-dasharray="100" stroke-dashoffset="{{ 100 - (($currentPage / $totalPages) * 100) }}"></circle>
+            </g>
+        </svg>
+        <!-- Percentage Text -->
+        <div class="absolute top-1/2 end-1/2 transform -translate-y-1/2 -translate-x-1/2">
+            <span class="text-center text-sm font-bold text-gray-600 dark:text-gray-200">{{ floor(($currentPage / $totalPages) * 100) }}%</span>
+            {{-- <span class="text-center text-sm font-bold text-gray-600 dark:text-gray-200">{{ (($currentPage / $totalPages) * 100) }}%</span> --}}
+        </div>
+    </div>     
+    @endif
+   
 </div>

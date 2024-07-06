@@ -23,16 +23,17 @@ class Quiz extends Component
     public function mount()
     {
         $this->questions = Question::all();
-        $this->totalPages = ceil($this->questions->count() / 10);
+        $this->totalPages = ceil($this->questions->count() / 12);
 
-        // $this->resultPattern = Pattern::find(1);
-        // $this->resultFunctionalAreas = $this->resultPattern->functionalAreas()->with('jobs')->get();
+        // $this->resultPattern = Pattern::find(2);
+        // $this->resultFunctionalAreas = $this->resultPattern->functionalAreas()->with('jobs')->orderBy('id')->get();
+
         // $this->showResults = true;
     }
 
     public function updatedCurrentPage()
     {
-        $this->questionsToShow = $this->questions->forPage($this->currentPage, 10);
+        $this->questionsToShow = $this->questions->forPage($this->currentPage, 12);
     }
 
     public function nextPage()
@@ -63,7 +64,7 @@ class Quiz extends Component
 
     public function allQuestionsAnswered()
     {
-        $questionsOnCurrentPage = $this->questions->forPage($this->currentPage, 10);
+        $questionsOnCurrentPage = $this->questions->forPage($this->currentPage, 12);
         foreach ($questionsOnCurrentPage as $question) {
             if (!isset($this->answers[$question->id])) {
                 return false;
@@ -100,7 +101,8 @@ class Quiz extends Component
         } else {
             // عرض النتائج
             $this->resultPattern = Pattern::find($patterns[0]);
-            $this->resultFunctionalAreas = $this->resultPattern->functionalAreas()->with('jobs')->get();
+            $this->resultFunctionalAreas = $this->resultPattern->functionalAreas()->with('jobs')->orderBy('id')->get();
+            // $this->resultFunctionalAreas = $this->resultPattern->functionalAreas()->with('jobs')->get();
             $this->showResults = true;
         }
     }
@@ -116,7 +118,7 @@ class Quiz extends Component
 
     public function render()
     {
-        $this->questionsToShow = $this->questions->forPage($this->currentPage, 10);
+        $this->questionsToShow = $this->questions->forPage($this->currentPage, 12);
         return view('livewire.quiz', [
             'questionsToShow' => $this->questionsToShow,
         ]);
