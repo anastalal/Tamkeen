@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Repeater;
 
 class PatternResource extends Resource
 {
@@ -20,8 +21,16 @@ class PatternResource extends Resource
     {
         return false;
     }
+    public static function getModelLabel(): string
+    {
+        return 'نمط';
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return __('الانماط');
+    }
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-identification';
 
     public static function form(Form $form): Form
     {
@@ -34,6 +43,28 @@ class PatternResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\RichEditor::make('description')
+                    ->columnSpanFull(),
+                   
+                Forms\Components\Repeater::make('jobs')
+                ->relationship()
+                ->addActionLabel('اضافة وظائف')
+                ->schema([
+                    Forms\Components\Select::make('functional_area_id')->relationship('functional_area','name')
+                    ->distinct()
+                    ->label('المساحة الوظيفية')
+                    ->required()
+                    ->disableOptionsWhenSelectedInSiblingRepeaterItems(),
+
+                    Forms\Components\RichEditor::make('description')
+                    ->label('الوظائف المتاحة')
+                ])
+                ->minItems(5)
+                ->collapsible()
+                // ->addable(false)
+                ->deletable(false)
+                ->defaultItems(5)
+                ->maxItems(5)
+                
                     ->columnSpanFull(),
                 // Forms\Components\Textarea::make('img')
                 //     ->columnSpanFull(),

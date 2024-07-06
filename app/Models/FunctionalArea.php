@@ -11,8 +11,8 @@ class FunctionalArea extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'descriptions',
-        'pattern_id'
+        'description',
+        // 'pattern_id'
     ];
     public function jobs(){
         return $this->hasMany(Job::class);

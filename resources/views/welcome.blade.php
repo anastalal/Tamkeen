@@ -22,6 +22,8 @@
         <meta property="twitter:description" content="محلل الاهتمامات هو أداة تساعدك في التعرف على اهتماماتك في المجال المهني، واستكشاف خياراتك المهنية التي من الممكن أن تحقق لك الرضا والنمو المهني المتوافق مع خبراتك ومهاراتك." />
         <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
 
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+
 <!-- Meta Tags Generated with https://metatags.io -->
 
         <style>
@@ -46,17 +48,18 @@
   
     </head>
     <body>
+    <div class="hidden border-green-300 border-orange-300 border-purple-300 border-blue-300 border-yellow-300 border-pink-300"></div>
+
         <main class="font-Rubikss">
             <x-hero/>
            {{-- <livewire:questions/> --}}
-           <div class=" text-gray-400 p-4">
-            <h1 class="text-2xl md:text-4xl mb-2 text-center text-purple-400 font-bold">اكتشف اهتمامك المهني</h1>
-            <p class="text-center">اختر "مهتم" أو "غير مهتم" لكل من الأسئلة التالية لتحديد اهتماماتك المهنية:</p>
-        </div>
+          
            <livewire:quiz/>
         </main>
         <div class="fixed left-0 top-0 -z-10 h-full w-full">
             <div class="relative h-full w-full bg-slate-950"><div class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div></div>
         </div>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <x-livewire-alert::scripts />
     </body>
 </html>

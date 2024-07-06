@@ -1,22 +1,45 @@
 <div>
+    @if (session()->has('error'))
+    <div class="text-red-500 text-center mb-4">
+        {{ session('error') }}
+    </div>
+@endif  
+    @if (!$showResults)
+    <div class=" text-gray-400 p-4">
+        <h1 class="text-2xl md:text-4xl mb-2 text-center text-purple-400 font-bold">اكتشف اهتمامك المهني</h1>
+        <p class="text-center">اختر "مهتم" أو "غير مهتم" لكل من الأسئلة التالية لتحديد اهتماماتك المهنية:</p>
+    </div>
+    @endif
    
     @if ($showResults)
-    <div class="hidden border-green-300 border-orange-300 border-purple-300 border-blue-300 border-yellow-300 border-pink-300"></div>
     <div class="result container mx-auto p-4 text-gray-200">
-        <h2 class="text-center  text-purple-400 font-semibold text-2xl">نمطك هو: {{ $resultPattern->name }}</h2>
+        <h2 class="text-center  text-purple-400 font-semibolds text-2xl md:text-5xl font-bold my-3">نمطك هو: {{ $resultPattern->name }}</h2>
         <p>
            {!! $resultPattern->description !!}
         </p>
-        <h3 class="text-center text-xl ext-2xl text-purple-400 font-semibold">المساحات الوظيفية:</h3>
+        <h3 class="text-center text-2xl md:text-4xl text-purple-400 font-semibold">المساحات الوظيفية:</h3>
         @foreach ($resultFunctionalAreas as $area)
-            <h4 class="text-xl text-purple-400 font-semibold">{{ $area->name }}</h4>
-            <p>هنا سوف تضهر الوظائف  في كل مساحة</p>
-            <ul>
+        <div class="my-16">
+            <h4 class="text-xls text-xl md:text-3xl text-purple-400 font-semibold">
+                {{ $area->id }} -
+                {{ $area->name }}</h4>
+            <div class="my-2 w-full">
+             {!! $area->description !!}
+            </div>
+            <div class="my-2">
+                <h4 class="text-xl text-purple-400 font-semibold">
+                    الاعمال التي تتناسب مع {{ $resultPattern->name }}
+                    -  المساحة الوظيفية
+                  ( {{ $area->name }} )
+                </h4>
                 @foreach ($area->jobs as $job)
-                    <li>{{ $job->name }}</li>
-
-                @endforeach
-            </ul>
+                <div class="l lining-nums area my-4">
+                    {!! $job->description !!}
+                </div>
+            @endforeach
+            </div>
+        </div>
+        <hr class=" border-gray-700">
         @endforeach
     </div>    
         {{-- <button wire:click="resetQuiz">إعادة الاختبار</button> --}}
@@ -58,9 +81,7 @@
                         class="absolute flex items-center justify-center w-full h-full text-purple-500 transition-all duration-300 transform group-hover:translate-x-full ease">التالي</span>
                     <span class="relative invisible">التالي</span>
                 </button>
-                {{-- <button class="bg-gray-400"  wire:click="nextPage">التالي</button> --}}
             @else
-                {{-- <button wire:click="nextPage">إنهاء</button> --}}
                 <button wire:click="nextPage"
                 class="relative inline-flex w-32 items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group">
                 <span

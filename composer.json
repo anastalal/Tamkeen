@@ -9,6 +9,7 @@
         "bensampo/laravel-enum": "^6.11",
         "filament/filament": "^3.2",
         "guzzlehttp/guzzle": "^7.2",
+        "jantinnerezo/livewire-alert": "^3.0",
         "joedixon/laravel-translation": "^2.2",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",

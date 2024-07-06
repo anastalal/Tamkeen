@@ -1,0 +1,15 @@
+.area ul {
+    /* list-style:disc; */
+    /* padding: 10px; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+
+}
+.area ul li{
+    background-color: rgb(52 48 64);;
+    padding: 10px;
+    border-radius: 20px;
+}

@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PatternResource\RelationManagers\QuestionsRelationManager;
-use App\Filament\Resources\QuestionResource\Pages;
-use App\Filament\Resources\QuestionResource\RelationManagers;
-use App\Models\Question;
+use App\Filament\Resources\FunctionalAreaResource\Pages;
+use App\Filament\Resources\FunctionalAreaResource\RelationManagers;
+use App\Models\FunctionalArea;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,35 +13,33 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class QuestionResource extends Resource
+class FunctionalAreaResource extends Resource
 {
-    protected static ?string $model = Question::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-question-mark-circle';
-
+    protected static ?string $model = FunctionalArea::class;
+    public static function canCreate(): bool
+    {
+        return false;
+    }
     public static function getModelLabel(): string
     {
-        return 'سؤال';
+        return 'مساحة وظيفية';
     }
     public static function getPluralModelLabel(): string
     {
-        return __('الاسئلة');
+        return __('المساحات الوظيفية');
     }
+
+    protected static ?string $navigationIcon = 'heroicon-o-map';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('text')
+                Forms\Components\TextInput::make('name')
                     ->required()
-                    ->columnSpanFull()
                     ->maxLength(255),
-                Forms\Components\Select::make('pattern_id')
-                ->relationship('pattern','name')->hiddenOn(QuestionsRelationManager::class)
-                    ->required()
-                    ,
-                // Forms\Components\::make('color')
-                //     ->maxLength(255),
+                Forms\Components\RichEditor::make('description')->required()
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -50,13 +47,8 @@ class QuestionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('text')
+                Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('pattern.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\ColorColumn::make('pattern.color')
-                    ->label('Color'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -89,9 +81,9 @@ class QuestionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListQuestions::route('/'),
-            'create' => Pages\CreateQuestion::route('/create'),
-            // 'edit' => Pages\EditQuestion::route('/{record}/edit'),
+            'index' => Pages\ListFunctionalAreas::route('/'),
+            'create' => Pages\CreateFunctionalArea::route('/create'),
+            'edit' => Pages\EditFunctionalArea::route('/{record}/edit'),
         ];
     }
 }
