@@ -1,7 +1,7 @@
 @props(['question'=> []])
 
 <div class="bg-gray-800s grid grid-rows-2 rounded-lg border text-white p-4 border-{{ $question->pattern->color }}-300">
-    <h3 class="text-xl text-gray-400 font-semibold my-2 md:text-2xl">
+    <h3 class="text-xl dark:text-gray-400 text-gray-600  font-semibold my-2 md:text-2xl">
         {{ $question->id }}-
         {{ $question->text }}
     </h3>

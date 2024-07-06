@@ -1,9 +1,9 @@
-<div>
-    @if (session()->has('error'))
-    <div class="text-red-500 text-center mb-4">
-        {{ session('error') }}
-    </div>
-@endif  
+<div class="">
+   <!-- Progress -->
+{{-- <div class=" fixed top-[9%]  flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow="{{ $currentPage  }}" aria-valuemin="{{ $currentPage  }}" aria-valuemax="{{ $totalPages }}">
+    <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500" style="width: {{  $currentPage  * 10 }}%"></div>
+ </div> --}}
+  <!-- End Progress -->
     @if (!$showResults)
     <div class=" text-gray-400 p-4">
         <h1 class="text-2xl md:text-4xl mb-2 text-center text-purple-400 font-bold">اكتشف اهتمامك المهني</h1>
