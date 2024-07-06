@@ -25,10 +25,14 @@ class Quiz extends Component
         $this->questions = Question::all();
         $this->totalPages = ceil($this->questions->count() / 12);
 
-        // $this->resultPattern = Pattern::find(2);
+         $this->resultPattern = Pattern::find(2);
+        $this->resultFunctionalAreas = $this->resultPattern->functionalAreas()->with(['jobs' => function ($query) {
+    $query->where('pattern_id', $this->resultPattern->id);
+}])->orderBy('id')->get();
+        
         // $this->resultFunctionalAreas = $this->resultPattern->functionalAreas()->with('jobs')->orderBy('id')->get();
 
-        // $this->showResults = true;
+        $this->showResults = true;
     }
 
     public function updatedCurrentPage()
