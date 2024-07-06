@@ -13,16 +13,17 @@
         <meta property="og:url" content="https://tmkeen.coderans.pro/" />
         <meta property="og:title" content="محلل الاهتمامات | اكتشف اهتمامك المهني" />
         <meta property="og:description" content="محلل الاهتمامات هو أداة تساعدك في التعرف على اهتماماتك في المجال المهني، واستكشاف خياراتك المهنية التي من الممكن أن تحقق لك الرضا والنمو المهني المتوافق مع خبراتك ومهاراتك." />
-        <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+        <meta property="og:image" content="https://tmkeen.coderans.pro/assets/img/logo.png" />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://tmkeen.coderans.pro/" />
         <meta property="twitter:title" content="محلل الاهتمامات | اكتشف اهتمامك المهني" />
         <meta property="twitter:description" content="محلل الاهتمامات هو أداة تساعدك في التعرف على اهتماماتك في المجال المهني، واستكشاف خياراتك المهنية التي من الممكن أن تحقق لك الرضا والنمو المهني المتوافق مع خبراتك ومهاراتك." />
-        <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+        <meta property="twitter:image" content="https://tmkeen.coderans.pro/assets/img/logo.png" />
 
-        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}?v={{ time() }}">
+
         <script>
             if (localStorage.getItem('dark-mode') === 'true' || (!('dark-mode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.querySelector('html').classList.add('dark');
