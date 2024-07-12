@@ -8,8 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail ,FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -23,6 +25,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
     ];
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return str_ends_with($this->email, '@tamkeenheb.sa');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
