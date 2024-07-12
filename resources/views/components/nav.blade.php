@@ -34,5 +34,6 @@
           <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500" href="#">من نحن</a>
         </div>
       </div>
+      <div aria-hidden="true" class="fixed z-10 inset-0 h-screen w-screen bg-white/70 backdrop-blur-2xl origin-bottom scale-y-0 transition duration-500 hs-collapse-open:origin-top hs-collapse-open:scale-y-100 lg:hidden dark:bg-gray-900/70 astro-UY3JLCBK"></div>
     </nav>
   </header>

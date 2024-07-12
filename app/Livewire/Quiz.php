@@ -5,7 +5,10 @@ use App\Models\Job;
 use App\Models\Pattern;
 use Livewire\Component;
 use App\Models\Question;
+use App\Models\QuizResult;
 use App\Models\FunctionalArea;
+use Livewire\Attributes\Layout;
+use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Quiz extends Component
@@ -24,9 +27,16 @@ class Quiz extends Component
     {
         $this->questions = Question::all();
         $this->totalPages = ceil($this->questions->count() / 12);
-
-        // $this->resultPattern = Pattern::find(5);
         
+        $pattern = QuizResult::where('user_id', Auth::id())->latest()->first();
+        if($pattern){
+            $this->resultPattern = Pattern::find($pattern->pattern_id);
+            $this->resultFunctionalAreas = $this->resultPattern->functionalAreas()->with(['jobs' => function ($query) {
+                $query->where('pattern_id', $this->resultPattern->id);
+            }])->orderBy('id')->get();
+                        $this->showResults = true;
+        }
+      
         
         // $this->resultFunctionalAreas = $this->resultPattern->functionalAreas()->with('jobs')->orderBy('id')->get();
 
@@ -103,11 +113,12 @@ class Quiz extends Component
         } else {
             // عرض النتائج
             $this->resultPattern = Pattern::find($patterns[0]);
-          //  $this->resultFunctionalAreas = $this->resultPattern->functionalAreas()->with('jobs')->orderBy('id')->get();
-            // $this->resultFunctionalAreas = $this->resultPattern->functionalAreas()->with('jobs')->get();
             $this->resultFunctionalAreas = $this->resultPattern->functionalAreas()->with(['jobs' => function ($query) {
-    $query->where('pattern_id', $this->resultPattern->id);
-}])->orderBy('id')->get();
+           $query->where('pattern_id', $this->resultPattern->id);}])->orderBy('id')->get();
+           QuizResult::create([
+            'user_id' => Auth::id(),
+            'pattern_id' => $this->resultPattern->id,
+        ]);
             $this->showResults = true;
         }
     }
@@ -121,6 +132,7 @@ class Quiz extends Component
         $this->resultFunctionalAreas = [];
     }
 
+    #[Layout('layouts.app')] 
     public function render()
     {
         $this->questionsToShow = $this->questions->forPage($this->currentPage, 12);

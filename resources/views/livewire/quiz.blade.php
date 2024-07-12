@@ -1,15 +1,5 @@
-<div class="">
-   <!-- Progress -->
-   
-   <div class="mx-2s">
-    {{-- <div class=" fixed  left-2 right-2 top-[9%]  flex w-fulls h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow="{{ $currentPage * 10  }}" aria-valuemin="10" aria-valuemax="{{ $totalPages * 10 }}" >
-        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-blue-500" style="width: {{   $currentPage *10 }}%"></div>
-     </div> --}}
-     
-   </div>
-
-
-  <!-- End Progress -->
+<div class="mt-[10vh]">
+  
     @if (!$showResults)
     <div class=" text-gray-400  p-4">
         <h1 class="text-2xl md:text-4xl mb-2 text-center text-purple-400 font-bold">اكتشف اهتمامك المهني</h1>
@@ -72,7 +62,7 @@
                 <x-question-card :question="$question" />
             @endforeach
         </div>
-        <div class="flex justify-center gap-5 my-10">
+        <div class="flex justify-center gap-5 ">
             @if ($currentPage > 1)
                 <button wire:click="previousPage"
                     class="relative inline-flex w-32 items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group">
@@ -123,7 +113,7 @@
         </div>
     @endif
     @if (!$showResults)
-    <div class="fixed bottom-1 size-12">
+    <div class="fixed bottom-1 size-12 ">
         <svg class="size-full" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
             <!-- Background Circle -->
             <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-gray-200 dark:text-neutral-700" stroke-width="2"></circle>

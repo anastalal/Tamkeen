@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Quiz;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,9 @@ Route::view('/', 'welcome');
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+Route::get('interest-analyst', Quiz::class)->middleware(['auth', 'verified'])
+->name('quiz');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
