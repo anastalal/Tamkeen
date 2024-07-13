@@ -1,4 +1,4 @@
-<section class="sm:py-24 bg-[url('/assets/img/vision-2030-Nodrh-Consulting.webp')] bg-cover">
+<section class="sm:py-24  bg-cover">
     <div class="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col md:flex-row gap-16">
         <div class="md:w-1/2 space-y-5 text-gray-700 dark:text-gray-300">
            <x-heading>
@@ -26,7 +26,7 @@
             </ul>
         </div>
         <div class="flex md:flex-1">
-            <img  src="{{ asset('assets/img/مشاريع-رؤية-2030-4-removebg-preview.png') }}" alt="working on housing" width="1300" class="w-full md:h-full object-cover rounded-lg">
+            <img  src="{{ asset('assets/img/2030vision.png') }}" alt="working on housing" width="1300" class="w-full md:h-full object-cover rounded-lg">
         </div>
     </div>
     </section>

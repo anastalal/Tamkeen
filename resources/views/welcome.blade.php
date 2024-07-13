@@ -191,7 +191,7 @@
                               </div>
                               <div class="flex-1 relative bg-gradient-to-tr from-sky-100 to-indigo-300 
                               p-6 rounded-lg aspect-[4/2.4] overflow-hidden">
-                                  <img src="{{ asset('assets/img/making-a-decision-for-career-path-career-guidance-and-development-businessman-standing-at-road-direction-signs-determination-to-pick-the-right-choice-in-career-vector-removebg-preview.png') }}" alt="illustration" width="1800" class="w-full h-auto">
+                                  <img src="{{ asset('assets/img/making-a-decision.png') }}" alt="illustration" width="1800" class="w-full h-auto">
                               </div>
                           </div>
                           <div class="flex flex-col md:items-center md:flex-row gap-10 lg:gap-14">
@@ -218,7 +218,7 @@
                               </div>
                               <div class="flex-1 relative bg-gradient-to-tr from-sky-100 to-indigo-300 
                               p-6 rounded-lg aspect-[4/2.4] overflow-hidden">
-                                  <img src="{{ asset('assets/img/1686648183510-removebg-preview.png') }}" alt="illustration" width="1800" class="w-full h-auto">
+                                  <img src="{{ asset('assets/img/1686648183510.png') }}" alt="illustration" width="1800" class="w-full h-auto">
                               </div>
                           </div>
                       </div>
