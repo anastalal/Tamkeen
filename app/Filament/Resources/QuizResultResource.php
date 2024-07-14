@@ -16,7 +16,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class QuizResultResource extends Resource
 {
     protected static ?string $model = QuizResult::class;
-
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function getModelLabel(): string
@@ -49,6 +52,7 @@ class QuizResultResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+        ->defaultSort('created_at','desc')
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')->label('User Name')
                     ->sortable()

@@ -16,9 +16,14 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
+   
     public static function getModelLabel(): string
     {
         return 'مستخدم';
@@ -55,6 +60,7 @@ class UserResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+           ->defaultSort('created_at','desc')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
@@ -72,6 +78,7 @@ class UserResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->striped()
             ->filters([
                 //
             ])

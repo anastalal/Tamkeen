@@ -20,10 +20,16 @@ class QuestionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-question-mark-circle';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     public static function getModelLabel(): string
     {
         return 'سؤال';
     }
+    
     public static function getPluralModelLabel(): string
     {
         return __('الاسئلة');
@@ -32,6 +38,7 @@ class QuestionResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+        ->defaultSort('created_at','desc')
             ->schema([
                 Forms\Components\TextInput::make('text')
                     ->required()
