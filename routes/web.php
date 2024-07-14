@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Livewire\Quiz;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('main');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -22,6 +23,13 @@ Route::view('dashboard', 'dashboard')
 
 Route::get('interest-analyst', Quiz::class)->middleware(['auth', 'verified'])
 ->name('quiz');
+
+Route::view('/خدمة-الارشاد-المهني-للموظفين', 'employee_ershad')
+->name('employee_ershad');
+Route::view('/خدمة-الارشاد-المهني-للباحثين-عن-عمل', 'customer_ershad')
+->name('customer_ershad');
+Route::view('/خدمة-برامج-التوجيه-والارشاد-للمنشات', 'company_ershad')
+->name('company_ershad');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
