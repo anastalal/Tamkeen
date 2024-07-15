@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use App\Livewire\Quiz;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\GoogleSocialiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,9 @@ Route::view('/خدمة-الارشاد-المهني-للباحثين-عن-عمل'
 ->name('customer_ershad');
 Route::view('/خدمة-برامج-التوجيه-والارشاد-للمنشات', 'company_ershad')
 ->name('company_ershad');
+
+Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('auth.google');  // redirect to google login
+Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);  
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])

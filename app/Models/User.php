@@ -24,6 +24,8 @@ class User extends Authenticatable implements MustVerifyEmail ,FilamentUser
         'name',
         'email',
         'password',
+        'email_verified_at',
+        'google_id'
     ];
 
     public function canAccessPanel(Panel $panel): bool
