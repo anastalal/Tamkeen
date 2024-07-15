@@ -83,8 +83,8 @@ new #[Layout('layouts.guest')] class extends Component
                         <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('تذكرني') }}</span>
                     </label>
                 </div>
-                <div class="flex items-center justify-center mt-4 ">
-                    <x-primary-button class="text-center w-full">
+                <div class="flex items-center justify-center mt-4  ">
+                    <x-primary-button wire:loading.class="cursor-not-allowed"  wire:loading.attr="disabled"  class=" text-center w-full">
                         {{ __('تسجيل الدخول') }}
                     </x-primary-button>
                 </div>

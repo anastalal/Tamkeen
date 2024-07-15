@@ -100,7 +100,7 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <div class="flex items-center justify-center mt-4 ">
-            <x-primary-button class="text-center w-full">
+            <x-primary-button wire:loading.class="cursor-not-allowed"  wire:loading.attr="disabled" class="text-center w-full">
                 {{ __('تسجيل') }}
             </x-primary-button>
         </div>
